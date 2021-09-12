@@ -6,7 +6,7 @@ emmmmm ..... OwO,目前的话使用的功能只能按照下面给的教程和软
 [点击这里](https://raw.githubusercontent.com/AnHiAo/MY-FILE_API/main/dist/my-file.exe)下载软件（需要墙)
 可以点击这里参考[视频教程](https://nio-1304077212.cos.ap-guangzhou.myqcloud.com/bandicam%202021-09-12%2016-10-36-395.mp4)
 
-## 全部功能(✔已实现)
+## 目前所有功能(待增加)
 - [x] 用户登录
 - [ ] 用户查询网盘信息
 - [ ] 用户设置个人信息
