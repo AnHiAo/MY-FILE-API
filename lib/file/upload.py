@@ -28,23 +28,24 @@ class upload_in_chunks(object):
                     break
                 self.readsofar += len(data)
                 percent = self.readsofar * 1e2 / self.totalsize
-                sys.stderr.write("\r 上传进度： {percent:3.0f}%".format(percent=percent))
+                sys.stderr.write("\r灌满(上传)进度： {percent:3.0f}%".format(percent=percent))
                 yield data
 
     def __len__(self):
         return self.totalsize
 
-def uploadFile(filePath,userCookie):
+def uploadFile(userinfo,globalData):
+    filePath =  userinfo[0]
+    userCookie =  globalData['userCookie']
     fileName = reSearch(r'[\w\.]+$',filePath,reI)
     if not osExists (filePath):
         return "file is  not found"
     fileName = fileName.group(0)
     fileSize = getFileSize(filePath)
-    print(fileName)
-    res = requests.get((f'https://my-file.cn/api/v3/file/upload/credential?path=%2F临时备份&size={fileSize}&name={fileName}&type=onedrive'),headers={
+    res = requests.get((f'https://my-file.cn/api/v3/file/upload/credential?path={globalData["currentPath"]}&size={fileSize}&name={fileName}&type=onedrive'),headers={
     "Cookie": "cloudreve-session=MTYzMTI4NjM0M3xOd3dBTkZoVFZ6TmFXVE5LUTFCUk5FUllSMVUwV2toWk5rZEpXamRIVURkV05WYzJORUZPU0VOV1JWSllWVmxNUjFCTVZGcFJRa0U9fDcaN0aUb_YQ4DOXMqNANpssqhCvFVrtIxTDNpxJj3UU; path_tmp=%E4%B8%B4%E6%97%B6%E5%A4%87%E4%BB%BD"
     },verify=False)
-    print(res.text)
+    print(f"文件名: {fileName}  状态:申请文件占位成功\n")
 
     class IterableToFileAdapter(object):
         def __init__(self, iterable):
@@ -69,7 +70,6 @@ def uploadFile(filePath,userCookie):
          "Cookie": userCookie
         },verify=False)
     lastData = json.dumps(res.json())
-    print(res.json())
     res  = requests.post(finishCallBack,headers={
     "Host": "my-file.cn",
     "Connection": "keep-alive",
@@ -81,12 +81,13 @@ def uploadFile(filePath,userCookie):
     "Sec-Fetch-Site": "same-origin",
     "Sec-Fetch-Mode":"cors",
     "Sec-Fetch-Dest": "empty",
-    "Referer": "https://my-file.cn/home?path=%2F%E4%B8%B4%E6%97%B6%E5%A4%87%E4%BB%BD",
     "Accept-Encoding": "gzip, deflate, br",
     "Accept-Language": "zh-CN,zh;q=0.9",
     "Cookie": userCookie
 
     },verify=False,data=lastData)
-    print((res.text))
+    if res:
+        print(f"文件名: {fileName}  状态:成功")
+    return globalData
 # 这个地方应该本身需要做两种 第一种就是针对小文件的传输 第二种就是针对大文件采用流上传
 # uploadFile("QQbotPresenter1221.7z")

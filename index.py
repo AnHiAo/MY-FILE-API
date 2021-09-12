@@ -1,4 +1,10 @@
 from scripts.main import  main
-data = None
+data = {
+    "userName":"nio",
+    "currentPath":"/"
+}
 while True:
-    data = main(input("请输入命令"),data)
+    try:
+        data = main(input(f"\n[ my-file@ {data['userName']}  {data['currentPath']}] :"), data)
+    except KeyboardInterrupt:
+        pass

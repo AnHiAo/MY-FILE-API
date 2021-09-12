@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04cbc451-8ae6-4ab2-b3ce-3361ac14ac33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/file/upload.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/user/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/folder/enterDirectory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/file/upload.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/file/upload.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/folder/getDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/folder/getDirectory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/user/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/user/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +51,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\my-file-api\scripts" />
+      <recent name="G:\my-file-api\src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,7 +65,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631284598505</updated>
-      <workItem from="1631284599794" duration="30033000" />
+      <workItem from="1631284599794" duration="41317000" />
+      <workItem from="1631426151155" duration="4637000" />
     </task>
     <servers />
   </component>
@@ -73,5 +83,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

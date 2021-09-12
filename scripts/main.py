@@ -3,35 +3,38 @@ from re import (
     search as reSearch,
 findall
 )
-
 from lib.user.login import login
-
-def todo(data):
-    print("todo")
-    print(data)
-def main(order,data):
-    if data == None:
-        data = {}
-    globalData = dict(data)
-    def getGlobalData(test,testdata):
-        print(globalData)
-    data = {
-        "getData":getGlobalData,
-        "git":{
-            "pull":{
-                "origin":"god"
-            },
-            "todo":todo
-        },
-        "login":login
+import os
+from lib.folder.getDirectory import  getDir
+from lib.folder.enterDirectory import  enterDir
+from lib.file.upload import uploadFile
+globalData = {}
+orders = {
+    "upload":uploadFile,
+    "getData":lambda  x,y:print(globalData),
+    "clear":lambda  x,y:os.system("cls"),
+    "cls":lambda  x,y:os.system("cls"),
+    "exit":lambda x,y: os._exit(0),
+    "cd":enterDir,
+    "ls":getDir,
+    "login":login
     }
+def getGlobalData(test,testdata):
+        print(globalData)
+        return globalData
+def main(order,data):
+    global globalData
+    # data
+    globalData = data
+    orders['getData'] = getGlobalData
     matchWordsList = (findall(r'[^\s]+', order, reI))
-    nowData = data
+    nowData = orders
     for i in range(len(matchWordsList)):
         if type(nowData) != dict:
             break
         if matchWordsList[i] in nowData.keys():
             nowData = nowData[matchWordsList[i]]
     if(type(nowData) == dict):
-        return print("not found , try again ")
+        print("not found , try again ")
+        return globalData
     return nowData(matchWordsList[i:],globalData)

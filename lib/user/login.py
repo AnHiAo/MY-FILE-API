@@ -1,11 +1,15 @@
 from requests import post as reqPost
 from json import dumps as jsonDumps
 from urllib3 import disable_warnings
+from lib.folder.getDirectory import  getDirData
+from lib.folder.enterDirectory import  enterDir
 disable_warnings()
 def login(userinfo,globalData):
+    if len(userinfo) < 2:
+        print("你输入的账号密码不全,请按照以下重新输入...\n")
+        userinfo = [input("请输入你的账号 :"),input("请输入你的密码 :")]
     username = userinfo[0]
     password = userinfo[1]
-    print(userinfo)
     loginReq = reqPost(
     "https://my-file.cn/api/v3/user/session",
     headers={
@@ -17,8 +21,14 @@ def login(userinfo,globalData):
         "captchaCode":"",
         "userName":username
     })     ,verify=False      )
-    print(loginReq.text)
     if(len(loginReq.text)):
-        print("登录成功")
+        resJson = loginReq.json()
+        if int(resJson['code']) != 0:
+            print(resJson['msg'])
+            return globalData
+        print("login successful !")
         globalData['userCookie'] = loginReq.headers.get('set-cookie')
-        return globalData
+        globalData['userName'] = loginReq.json()['data']['user_name']
+        globalData['currentPath'] = '/'
+        # return globalData
+        return getDirData(["ls"],globalData)
