@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04cbc451-8ae6-4ab2-b3ce-3361ac14ac33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/folder/enterDirectory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/orders.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/15点06分.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/file/upload.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/file/upload.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/folder/getDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/folder/getDirectory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/user/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/user/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1631284598505</updated>
       <workItem from="1631284599794" duration="41317000" />
-      <workItem from="1631426151155" duration="4637000" />
+      <workItem from="1631426151155" duration="4790000" />
+      <workItem from="1631433095392" duration="1481000" />
     </task>
     <servers />
   </component>

@@ -59,7 +59,7 @@ def uploadFile(userinfo,globalData):
             return self.length
 
     finishCallBack = res.json()['data']['token']
-    it = upload_in_chunks(fileName,10)
+    it = upload_in_chunks(fileName,2097152) # 2 * 1024 * 1024
     res = requests.put(
         res.json()['data']['policy'],
         data=IterableToFileAdapter(it),
