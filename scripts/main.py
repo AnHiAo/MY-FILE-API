@@ -7,9 +7,14 @@ from lib.user.login import login
 import os
 from lib.folder.getDirectory import  getDir
 from lib.folder.enterDirectory import  enterDir
+from lib.folder.makeDirectory import makeDir
+from lib.folder.removeDirectory import rmDir
 from lib.file.upload import uploadFile
+
 globalData = {}
 orders = {
+    "rmdir":rmDir,
+    "mkdir":makeDir,
     "upload":uploadFile,
     "getData":lambda  x,y:print(globalData),
     "clear":lambda  x,y:os.system("cls"),

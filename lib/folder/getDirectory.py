@@ -17,7 +17,7 @@ def getDirData(userinfo,globalData):
         )
         if res:
             for i in res.json()['data']['objects']:
-                outputStrList.append([i['type'],i['date'],i['name']])
+                outputStrList.append([i['type'],i['date'],i['name'],i['id']])
                 # outputStrList.append(f' ( {i["type"]} )    {i["date"]}{" "*4}{i["name"]}')
         globalData['currentDirectoryData'] = outputStrList
         return globalData
