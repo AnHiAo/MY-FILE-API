@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04cbc451-8ae6-4ab2-b3ce-3361ac14ac33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/folder/makeDirectory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/folder/removeDirectory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/folder/getDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/folder/getDirectory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/Analysis-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/EXE-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/PKG-00.pkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/PKG-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/PYZ-00.pyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/PYZ-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/index.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/warn-index.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index/xref-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/my-file.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/file/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/file/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/file/upload.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/file/upload.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/folder/makeDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/folder/makeDirectory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/folder/removeDirectory.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/folder/removeDirectory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +59,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../用户圆角裁剪三角形" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -65,7 +80,10 @@
       <workItem from="1631426151155" duration="4790000" />
       <workItem from="1631433095392" duration="2531000" />
       <workItem from="1631521026394" duration="154000" />
-      <workItem from="1631676269804" duration="2477000" />
+      <workItem from="1631676269804" duration="2902000" />
+      <workItem from="1631767731420" duration="7408000" />
+      <workItem from="1631784504459" duration="44000" />
+      <workItem from="1631784562437" duration="63000" />
     </task>
     <servers />
   </component>

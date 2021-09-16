@@ -9,6 +9,7 @@ from os.path import (
     exists as osExists,
     getsize as getFileSize
 )
+from urllib.parse import quote
 disable_warnings()   # cancel requests warnings...
 
 
@@ -39,7 +40,8 @@ def uploadFile(userinfo,globalData):
     userCookie =  globalData['userCookie']
     fileName = reSearch(r'[\w\.]+$',filePath,reI)
     if not osExists (filePath):
-        return "file is  not found"
+        print("file is  not found")
+        return globalData
     fileName = fileName.group(0)
     fileSize = getFileSize(filePath)
     res = requests.get((f'https://my-file.cn/api/v3/file/upload/credential?path={globalData["currentPath"]}&size={fileSize}&name={fileName}&type=onedrive'),headers={
@@ -58,6 +60,24 @@ def uploadFile(userinfo,globalData):
         def __len__(self):
             return self.length
 
+    if not len(res.json()['data']['policy']):
+        # 这里就是针对小文件上传 大概分割线的标准是4MB
+        it = upload_in_chunks(fileName, 2097152)  # 2 * 1024 * 1024
+        res = requests.post(
+            "https://my-file.cn/api/v3/file/upload?chunk=0&chunks=1",
+            data=IterableToFileAdapter(it),
+            # open(fileName,"rb").read(),
+            headers={
+                "x-filename": quote(fileName),
+                "x-path": quote(globalData["currentPath"]),
+                "content-type": "application/octet-stream",
+                "Cookie": userCookie
+            }, verify=False)
+        print(res.text)
+        # lastData = json.dumps(res.json())
+        if res:
+            print(f"文件名: {fileName}  状态:成功")
+        return globalData
     finishCallBack = res.json()['data']['token']
     it = upload_in_chunks(fileName,2097152) # 2 * 1024 * 1024
     res = requests.put(

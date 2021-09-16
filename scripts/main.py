@@ -10,12 +10,13 @@ from lib.folder.enterDirectory import  enterDir
 from lib.folder.makeDirectory import makeDir
 from lib.folder.removeDirectory import rmDir
 from lib.file.upload import uploadFile
-
+from lib.file.delete import deleteFile
 globalData = {}
 orders = {
     "rmdir":rmDir,
     "mkdir":makeDir,
-    "upload":uploadFile,
+    "del":deleteFile,
+    "up":uploadFile,
     "getData":lambda  x,y:print(globalData),
     "clear":lambda  x,y:os.system("cls"),
     "cls":lambda  x,y:os.system("cls"),
