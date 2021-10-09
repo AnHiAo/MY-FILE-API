@@ -3,8 +3,8 @@ from re import (
     search as reSearch,
 findall
 )
+from os import system as osSys,_exit as os_exit,listdir as osListdir,getcwd as osGetcwd
 from lib.user.login import login
-import os
 from lib.folder.getDirectory import  getDir
 from lib.folder.enterDirectory import  enterDir
 from lib.folder.makeDirectory import makeDir
@@ -26,9 +26,10 @@ orders = {
     "download":downloadFile,
     "up":uploadFile,
     "getData":lambda x,y:systemOperation(print,globalData),
-    "clear": lambda  x,y:systemOperation(os.system,"cls"),
-    "cls":lambda x,y:systemOperation(os.system,"cls"),
-    "exit":lambda x,y:systemOperation(os._exit,0),
+    "clear": lambda  x,y:systemOperation(osSys,"cls"),
+    "cls":lambda x,y:systemOperation(osSys,"cls"),
+    "exit":lambda x,y:systemOperation(os_exit,0),
+    "dir":lambda x,y:systemOperation(print,"\n".join(osListdir( osGetcwd()))),
     "cd":enterDir,
     "ls":getDir,
     "login":login
@@ -38,7 +39,6 @@ def getGlobalData(test,testdata):
         return globalData
 def main(order,data):
     global globalData
-    # data
     globalData = data
     orders['getData'] = getGlobalData
     matchWordsList = (findall(r'[^\s]+', order, reI))

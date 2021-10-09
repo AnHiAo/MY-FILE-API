@@ -1,8 +1,7 @@
-import requests
-import os,sys
-def my_callback(monitor):
-    print(monitor.bytes_read)
-import json
+
+from requests import post as reqPost ,put as reqPut , get as reqGet
+from sys.stderr import write as sysStderrWrite
+from json import dumps as jsonDumps
 from urllib3 import disable_warnings
 from re import I as reI,search as reSearch
 from os.path import (
@@ -11,8 +10,8 @@ from os.path import (
 )
 from urllib.parse import quote
 disable_warnings()   # cancel requests warnings...
-
-
+def my_callback(monitor):
+    print(monitor.bytes_read)
 class upload_in_chunks(object):
     def __init__(self, filename, chunksize=1 << 13):
         self.filename = filename
@@ -25,11 +24,11 @@ class upload_in_chunks(object):
             while True:
                 data = file.read(self.chunksize)
                 if not data:
-                    sys.stderr.write("\n")
+                    sysStderrWrite("\n")
                     break
                 self.readsofar += len(data)
                 percent = self.readsofar * 1e2 / self.totalsize
-                sys.stderr.write("\r灌满(上传)进度： {percent:3.0f}%".format(percent=percent))
+                sysStderrWrite("\r(上传)进度： {percent:3.0f}%".format(percent=percent))
                 yield data
 
     def __len__(self):
@@ -44,8 +43,8 @@ def uploadFile(userinfo,globalData):
         return globalData
     fileName = fileName.group(0)
     fileSize = getFileSize(filePath)
-    res = requests.get((f'https://my-file.cn/api/v3/file/upload/credential?path={globalData["currentPath"]}&size={fileSize}&name={fileName}&type=onedrive'),headers={
-    "Cookie": "cloudreve-session=MTYzMTI4NjM0M3xOd3dBTkZoVFZ6TmFXVE5LUTFCUk5FUllSMVUwV2toWk5rZEpXamRIVURkV05WYzJORUZPU0VOV1JWSllWVmxNUjFCTVZGcFJRa0U9fDcaN0aUb_YQ4DOXMqNANpssqhCvFVrtIxTDNpxJj3UU; path_tmp=%E4%B8%B4%E6%97%B6%E5%A4%87%E4%BB%BD"
+    res =reqGet((f'https://my-file.cn/api/v3/file/upload/credential?path={globalData["currentPath"]}&size={fileSize}&name={fileName}&type=onedrive'),headers={
+    "Cookie": userCookie
     },verify=False)
     print(f"文件名: {fileName}  状态:申请文件占位成功\n")
 
@@ -59,11 +58,10 @@ def uploadFile(userinfo,globalData):
 
         def __len__(self):
             return self.length
-
     if not len(res.json()['data']['policy']):
         # 这里就是针对小文件上传 大概分割线的标准是4MB
         it = upload_in_chunks(fileName, 2097152)  # 2 * 1024 * 1024
-        res = requests.post(
+        res = reqPost(
             "https://my-file.cn/api/v3/file/upload?chunk=0&chunks=1",
             data=IterableToFileAdapter(it),
             # open(fileName,"rb").read(),
@@ -80,7 +78,7 @@ def uploadFile(userinfo,globalData):
         return globalData
     finishCallBack = res.json()['data']['token']
     it = upload_in_chunks(fileName,2097152) # 2 * 1024 * 1024
-    res = requests.put(
+    res = reqPut(
         res.json()['data']['policy'],
         data=IterableToFileAdapter(it),
         # open(fileName,"rb").read(),
@@ -89,8 +87,8 @@ def uploadFile(userinfo,globalData):
             "content-range":f"bytes 0-{fileSize-1}/{fileSize}",
          "Cookie": userCookie
         },verify=False)
-    lastData = json.dumps(res.json())
-    res  = requests.post(finishCallBack,headers={
+    lastData = jsonDumps(res.json())
+    res  = reqPost(finishCallBack,headers={
     "Host": "my-file.cn",
     "Connection": "keep-alive",
     "sec-ch-ua": '''Google Chrome';v="93", " Not;A Brand";v="99", "Chromium";v="93"''',

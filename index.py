@@ -1,6 +1,7 @@
 from scripts.main import  main
+import os
 data = {
-    "userName":"nio",
+    "userName":"unknown",
     "currentPath":"/"
 }
 while True:
